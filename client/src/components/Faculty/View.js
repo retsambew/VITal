@@ -1,0 +1,47 @@
+import React, {useEffect, useState} from 'react'
+import SideBar from './SideBar.js';
+import Card from './Card.js'
+
+const View = () => {
+    const [faculties, setFaculty] = useState([{
+        name: '',
+        desn: '',
+        subj: '',
+        desc: '',
+        link: '',
+        file: '',
+    }]);
+
+    useEffect(() => {
+        fetch("/faculty").then(res => {
+            if(res.ok){
+                return res.json();
+            }
+        }).then(jsonRes => setFaculty(jsonRes));
+        
+    });
+
+    return (
+        <div>
+            <div className='text-center my-3'>
+               <h2 className='shadow-lg p-2 px-4' style={{display:'inline-block', borderRadius: '15px', background:'#050A30', color: '#F0BC58'}}>Faculties</h2><hr/>
+            </div>
+            <div className='row'>
+                <div className='col-2'>
+                    <SideBar/>
+                </div>
+                <div className='col-10'>
+                <div className='row row-cols-1 row-cols-md-3 g-4' style={{margin:'auto'}}>
+                    {faculties.map( faculty =>
+                            <div className='col'>
+                            <Card name={faculty.name} desn={faculty.desn} desc={faculty.desc} file={faculty.file} />
+                        </div>
+                    )}
+                </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default View;

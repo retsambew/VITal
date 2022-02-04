@@ -1,0 +1,45 @@
+.dropmenu {
+    background: #4e87dd;
+    width: 180px;
+    padding: 0px;
+    position:absolute;
+    top: 60px;
+    list-style: none;
+    text-align: start;
+    z-index: 10;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  
+  .dropmenu li {
+    margin: 5px;
+    border-radius: 8px;
+    background: #4e87dd;
+    cursor: pointer;
+  }
+  
+  .dropmenu li:hover {
+    background: #4db8ffd8;
+  }
+  
+  .dropmenu.clicked {
+    display: none;
+  }
+  
+  .droplink {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px;
+  }
+
+  .droplink:hover{
+    color: white;
+  }
+  @media screen and (max-width: 960px) {
+    .fa-caret-down {
+      display: none;
+    }
+  }
